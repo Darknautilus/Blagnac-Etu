@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+
+<p>Bonjour {{ nom }}<br/>
+{% if estAdmin == true %}
+	Vous êtes Administrateur ! Respect !
+{% else %}
+	T'es pas Administrateur, tocard...
+{% endif %}
+</p>
+
+{% endblock %}

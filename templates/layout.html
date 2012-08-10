@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="style/global.css" />
+	<title>{% block title %}{% endblock %} - Blagnac-Etu</title>
+</head>
+
+<body>
+
+<header>
+{% include 'gbl_header.html' %}
+</header>
+
+<div id="content">
+{% block content %}
+{% endblock %}
+</div>
+
+<footer>
+{% include 'gbl_footer.html' %}
+</footer>
+
+</body>
+</html>

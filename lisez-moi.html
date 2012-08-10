@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>Consignes de travail - Blagnac-Etu</title>
+	<meta charset="utf-8" />
+</head>
+
+<body>
+
+<h3>Bien le bonjour, jeune web-designer !</h3>
+
+<p>Tu as devant toi l'ébauche de ce qui deviendra LE site d'information concernant la vie étudiante à l'IUT de Blagnac.<br/>
+Tu t'interroges sûrement pour savoir si je ne fume pas un peu, mais crois-moi, il y a de quoi faire encore</p>
+
+<h1>Généralités</h1>
+
+<p>Cette fois-ci j'ai voulu faire les choses correctement. J'ai donc utilisé les meilleurs outils et les meilleures techniques que j'avais en ma possession.<br/>
+Il s'agit d'un site réalisé selon le format MVC, avec un front-controller appelé à chaque requête. Il utilise un découpage en modules, chaque module contenant plusieurs actions (modèle/controlleur). Attention, ici, une action = un fichier .php (voir plus bas pour les conventions de nommage)<br/>
+Pour la vue, j'ai choisi d'utiliser le moteur de templates Twig, dont le tutoriel est présent à la racine du site.</p>
+
+<h1>Le front-Controller</h1>
+
+<p>Bon faut dire qu'en tant que web-designer, tu n'as pas besoin de savoir comment fonctionne mon script (MVC, je t'aime). Mais ça peut être intéressant de savoir comment fonctionne la bête.<br/>
+Le fichier index.php est appelé lors de chaque requête sur le site (lors de chaque clic sur un lien par exemple). On lui passe en paramètre dans l'URL (méthode GET) le module recherché et l'action à effectuer.<br/>
+Le script détecte s'il y a une erreur (module/action inexistant ou syntaxe incorrecte) et inclus le cas échéant le fichier correspondant à l'action voulue. S'il y a une erreur dans l'URL, le script charge le module par défaut et/ou l'action par défaut.<br/>
+Ces paramètres par défaut sont définis dans le fichier queries.php qui recense tous les modules installés sur le site et toutes les actions de chaque module (il faudra veiller à le tenir à jour). Le fichier config.php contient d'autres paramètres mais pas très intéressants à analyser.</p>
+
+<h1>Le Modèle-Controlleur</h1>
+
+<p>On trouve donc les modules dans le répertoire "modules" à la racine du site. Chaque module se présente sous la forme d'un répertoire. Ce répertoire contient tous les fichiers .php correspondant à chaque action du module.<br/>
+Les actions sont de simples scripts PHP interagissant avec la BDD ou les sessions, etc. La convention de nommage pour ces fichiers est module_action.php. Enfin, c'est eux et seulement eux qui sont habilités à appeler la vue, c'est à dire le moteur de templates.</p>
+
+<h1>La Vue : Twig</h1>
+
+<p>Tout ce qui concerne la vue est dans le répertoire "templates", c'est ici que toi, web-designer, tu passeras la majorité de ton temps. Les templates sont de simples fichiers HTML contenant des directives Twig, le moteur de templates.<br/>
+Chaque template possède la convention de nommage suivante : module_action.html.<br/>
+Tu as aussi le répertoire "ressources" pour tout ce qui concerne les images, les polices, etc ; et également le répertoire "style" contenant les CSS. Tu peux t'arranger ces répertoires comme tu veux, y créer des sous-répertoires mais jamais ne supprimer les fichiers existants de base.</p>
+
+<h1>Le Forum : point épineux</h1>
+
+<p>Tu remarqueras ce drôle de répertoire "forum" à la racine du site. Il s'agit tout simplement d'un forum phpBB que j'ai choisi d'utiliser, juste pour m'épargner la peine d'en faire un moi-même (pas le temps, peut-être plus tard).<br/>
+Au début c'est sympa, tu te dis que tu n'auras pas trop de mal à l'intégrer et ben non ! Il utilise tout d'abord son prore moteur de templates, et la modification des styles n'est pas très aisée.<br/>
+C'est la cause de toutes les bizarreries de mon organisation :<br/>
+<ul>
+	<li>Le forum n'est pas traité comme un module normal, il n'apparaît donc pas dans queries.php</li>
+	<li>On ne peut donc pas l'appeler de la manière classique (le front-controller), mais en pointant directement vers l'index du répertoire "forum"</li>
+	<li>Pour pouvoir l'intégrer dans la présentation générale du site, il faut lui intégrer les templates contenant tout ça</li>
+</ul>
+<br/>
+Tu comprendras donc que Twig perd ici de l'utilité, car ces fichiers, gbl_header.html et gbl_footer.html sont du HTML pur, sans directives Twig pour pouvoir être interprétés par le moteur de templates de phpBB.<br/>
+Ces deux fichiers doivent donc contenir le bandeau du site, le menu et le pied de page (entre autres) et ne peuvent qu'être statiques (non modifiables par PHP). Tu peux en revanche y intégrer du Javascript sans problème.<br/>
+Le style de ces fichiers se trouve dans global.css. Ce fichier CSS est également inclus dans les CSS de phpBB.</p>
+
+<h3>Installation et utilisation du forum</h3>
+
+<p>Tout d'abord, il n'est pas nécessaire de tester ta mise en page sur le forum dès le début. Toutefois, si tu en as besoin, voici un petit tuto.<br/>
+Pour pouvoir travailler sur le forum, tu devras en installer une version chez toi.<br/>
+<ul>
+	<li>Supprime le répertoire "forum" ou déplace-le ou renomme-le (si tu n'aimes pas jeter)</li>
+	<li>Dézippe l'archive contenant le forum, renomme le répertoire en "forum"</li>
+	<li>Exécute le forum depuis ton navigateur, suis les étapes de l'installation normalement</li>
+	<li>Une fois l'installation terminée, tu peux choisir un nouveau style correspondant au design général du site <a href="http://www.phpbb3styles.net/">ici</a></li>
+	<li>Envois-moi le nom du style pour que je te le modifie et te le renvoie</li>
+	<li>Place le répertoire dans <em>forum/styles</em>.</li>
+	<li>Active le style dans l'interface d'administration du forum</li>
+</ul>
+<br/>
+
+Si tu fais des modifications de style sur le forum, tu devras vider le cache du forum (section styles/templates du panneau d'administration) et de ton navigateur.</p>
+
+<h1>Pour finir</h1>
+
+<p>Ouf, tu as presque tout lu (ou pas), sache que le module par défaut pour l'instant est "index". Il n'a qu'une seule action : "show". Tu pourras donc utiliser ce module pour tester la présentation générale du site et, si tu veux, y faire une petite page d'accueil en attendant que j'aie réalisé le système de news.<br/>
+N'oublie pas que chaque template hérite de layout.html, mais tu en apprendras plus en lisant le tuto sur Twig.</p>
+
+<p>N'hésite pas à me demander tous les renseignements dont tu as besoin, et surtout, merci beaucoup du temps que tu y consacreras ;)</p>
+
+</body>
+</html>
