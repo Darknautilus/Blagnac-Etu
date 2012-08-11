@@ -9,7 +9,8 @@ define("DEFAULT_MODULE", "index");
 	Action par défaut pour chaque module
 */
 $DEFAULT_ACTION = array(
-	"index" => "show"
+	"index" => "show",
+	"membres" => "auth"
 );
 $GLOBALS["DEFAULT_ACTION"] = $DEFAULT_ACTION;
 
@@ -17,12 +18,14 @@ $GLOBALS["DEFAULT_ACTION"] = $DEFAULT_ACTION;
 	Liste des modules et des actions
 */
 $MODULES = array(
-	"index"
+	"index",
+	"membres"
 );
 $GLOBALS["MODULES"] = $MODULES;
 
 $ACTIONS = array(
-	"index" => "show"
+	"index" => "show",
+	"membres" => "auth"
 );
 $GLOBALS["ACTIONS"] = $ACTIONS;
 

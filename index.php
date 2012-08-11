@@ -12,6 +12,8 @@ $auth->acl($user->data);
 $user->setup();
 $GLOBALS["user"] = $user;
 $GLOBALS["auth"] = $auth;
+$GLOBALS["phpbb_root_path"] = $phpbb_root_path;
+$GLOBALS["phpEx"] = $phpEx;
 
 function estAdmin()
 {

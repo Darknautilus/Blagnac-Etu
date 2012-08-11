@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}Authentification{% endblock %}
+
+{% block content %}
+
+{% if user_id != ANONYMOUS %}
+
+<p>Bienvenue {{ username }}<br/>
+<a href="./index.php?module=membres&action=auth&logout=true">Déconnexion</a>
+</p>
+
+{% else %}
+	{% if err %}
+	
+	<font color=red><b>{{ err }}</b></font>
+	
+	{% endif %}
+	
+<form method="post" action="./index.php?module=membres&action=auth">
+   <table>
+      <tr>
+         <td align="right">Pseudo:</td>
+         <td><input type="text" tabindex="1" name="username" size="25" /></td>
+      </tr>
+      <tr>
+         <td align="right">Mot de passe:</td>
+         <td><input type="password" tabindex="2" name="password" size="25" />
+         <br /><a href="{{ phpbb_root_path }}ucp.{{ phpEx }}?mode=sendpassword">J’ai oublié mon mot de passe</a>
+         </td>
+      </tr>
+      <tr>
+      
+      </tr>
+      <tr>
+         <td>&nbsp;</td>
+         <td><input type="checkbox" name="autologin" tabindex="3" /> Me connecter automatiquement à chaque visite</td>
+      </tr>
+      <tr>
+         <td>&nbsp;</td>
+         <td><input type="checkbox" name="viewonline" tabindex="4" /> Cacher mon statut en ligne pour cette session</td>
+      </tr>
+      <tr>
+         <td colspan="2" align="center"><input type="submit" name="login" tabindex="5" value="Connexion" /></td>
+      </tr>
+   </table>
+</form>
+
+{% endif %}
+
+{% endblock %}
