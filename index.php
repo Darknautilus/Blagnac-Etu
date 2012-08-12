@@ -46,6 +46,13 @@ if(get_magic_quotes_gpc())
 }
 
 /*
+	Sécurisation des formulaires
+*/
+$_POST = array_map("htmlspecialchars", $_POST);
+$_GET = array_map("htmlspecialchars", $_GET);
+$_COOKIE = array_map("htmlspecialchars", $_COOKIE);
+
+/*
 	Démarrage de la temporisation de sortie
 */
 ob_start();

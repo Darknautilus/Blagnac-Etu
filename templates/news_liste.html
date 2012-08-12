@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}Liste des news{% endblock %}
+
+{% block content %}
+
+{% for new in listeNews %}
+<div class="news">
+	<h3>{{ new.news_title }}</h3><br/>
+	<span class="news_info">Par {{ new.news_author }} le {{ new.news_date }}</span>
+	<div class="news_content">
+	{{ new.news_content }}
+	</div>
+</div>
+{% endfor %}
+
+{% endblock %}

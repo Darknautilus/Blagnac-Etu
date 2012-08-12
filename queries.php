@@ -10,7 +10,8 @@ define("DEFAULT_MODULE", "index");
 */
 $DEFAULT_ACTION = array(
 	"index" => "show",
-	"membres" => "auth"
+	"membres" => "auth",
+	"news" => "liste"
 );
 $GLOBALS["DEFAULT_ACTION"] = $DEFAULT_ACTION;
 
@@ -19,13 +20,15 @@ $GLOBALS["DEFAULT_ACTION"] = $DEFAULT_ACTION;
 */
 $MODULES = array(
 	"index",
-	"membres"
+	"membres",
+	"news"
 );
 $GLOBALS["MODULES"] = $MODULES;
 
 $ACTIONS = array(
 	"index" => "show",
-	"membres" => "auth"
+	"membres" => "auth",
+	"news" => "liste"
 );
 $GLOBALS["ACTIONS"] = $ACTIONS;
 
