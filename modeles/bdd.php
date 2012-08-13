@@ -53,3 +53,13 @@ class BDD
 		return $this->result;
 	}
 }
+
+function nbElemTable($table)
+{
+	$streamNbElem = new BDD;
+	$streamNbElem->query("SELECT COUNT(*) FROM ".$table);
+	
+	$nbElem = $streamNbElem->result()->fetchAll();
+	
+	return $nbElem[0]["COUNT(*)"];
+}

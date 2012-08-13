@@ -14,4 +14,19 @@
 </div>
 {% endfor %}
 
+<div id="navPages">
+{% if numPage > 1 %}
+	<a href="./index.php?module=news&action=liste&page={{ numPage - 1 }}">Page précédente</a>
+{% endif %}
+{% for page in 1..nbPages %}
+	{% if page != numPage %}<a href="./index.php?module=news&action=liste&page={{ page }}">{% endif %}
+	{{ page }}
+	{% if page != numPage %}</a>{% endif %}
+{% endfor %}
+{% if numPage < nbPages %}
+	<a href="./index.php?module=news&action=liste&page={{ numPage + 1 }}">Page suivante</a>
+{% endif %}
+	
+</div>
+
 {% endblock %}
