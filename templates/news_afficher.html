@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}Affichage d'une news - {% if error == null %}{{ news.news_title }}{% else %}Erreur{% endif %}{% endblock %}
+
+{% block content %}
+<div class="navPages">
+	<a href="./index.php?module=news">Revenir à la liste des news</a>
+</div>
+
+{% if error == null %}
+<div class="news_Full">
+	<h3>{{ news.news_title }}</h3>
+	<span class="news_info">Par {{ news.news_author }} le {{ news.news_date }}</span>
+	<div class="news_content">
+	{{ news.news_content }}
+	</div>
+</div>
+{% else %}
+<div class="error">
+	<p>{{ error }}</p>
+</div>
+{% endif %}
+
+{% endblock %}

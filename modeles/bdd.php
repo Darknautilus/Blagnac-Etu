@@ -2,10 +2,6 @@
 
 class BDD
 {
-	private $dbserver;
-	private $dbname;
-	private $dbuser;
-	private $dbpasswd;
 	private $err;
 	private $stream;
 	private $result;
@@ -13,13 +9,9 @@ class BDD
 	
 	public function __construct()
 	{
-		$this->dbserver = DBSERVER;
-		$this->dbname = DBNAME;
-		$this->dbuser = DBUSER;
-		$this->dbpasswd = DBPASSWD;
 		$this->stream = null;
 		$this->result = null;
-		$this->err = "";
+		$this->err = null;
 	}
 	
 	public function query($query)
@@ -31,7 +23,7 @@ class BDD
 		*/
 		try
 		{
-			$this->stream = new PDO("mysql:host=".$this->dbserver.";dbname=".$this->dbname,$this->dbuser, $this->dbpasswd);
+			$this->stream = new PDO("mysql:host=".DBSERVER.";dbname=".DBNAME,DBUSER, DBPASSWD);
 			$this->stream->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 			$this->result = $this->stream->query($query);
 		}
@@ -43,8 +35,16 @@ class BDD
 		$errorCode = $this->stream->errorCode();
 		
 		$this->stream = null;
-		$this->err .= "Erreur SQL : ".$errorInfo[2];
+		$this->err = "Erreur SQL : ".$errorInfo[2];
 		
+		if($this->err == "Erreur SQL : ")
+			return true;
+		else
+			return false;
+	}
+	
+	public function error()
+	{
 		return $this->err;
 	}
 	

@@ -28,7 +28,8 @@ $GLOBALS["MODULES"] = $MODULES;
 $ACTIONS = array(
 	"index" => "show",
 	"membres" => "auth",
-	"news" => "liste"
+	"news" => "liste",
+	"news" => "afficher"
 );
 $GLOBALS["ACTIONS"] = $ACTIONS;
 
