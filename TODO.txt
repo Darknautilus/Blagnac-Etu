@@ -7,6 +7,6 @@ Aurélien :
 | Installation forum
 | Intégration sessions phpBB
 - Module News
-- Module Membres / Authentification
+| Module Membres / Authentification
 
 Quentin : 

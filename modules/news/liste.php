@@ -1,7 +1,5 @@
 <?php
 
-include(PATH_MODELES."/bdd.php");
-
 // Calcul du nombre de news à afficher
 if(!isset($_GET["page"]) || $_GET["page"] <= 1)
 	$page_news = 1;

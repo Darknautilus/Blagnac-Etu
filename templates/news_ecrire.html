@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}Écriture d'une news{% endblock %}
+
+{% block content %}
+<form method="post" action="./index.php?module=news&action=save&id={{ tabNews.news_id }}&mode={{ mode }}">
+	<p>
+	<label for="newsTitle">Titre : </label>
+	<input type="text" id="newsTitle" name="newsTitle" value="{{ tabNews.news_title }}" /><br/>
+	<label for="newsAuthor">Auteur : </label>
+	<input type="text" id="newsAuthor" name="newsAuthor" value="{{ tabNews.news_author }}" /><br/>
+	
+	<textarea id="newsContent" name="newsContent" rows=20 cols=50>{{ tabNews.news_content }}</textarea>
+	<br/>
+	
+	<input type="submit" value="Envoyer" />
+	</p>
+</form>
+	
+{% endblock %}

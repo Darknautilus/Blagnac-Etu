@@ -71,8 +71,13 @@ else
 /*var_dump($module);
 var_dump($action);*/
 
-$chemin_include = PATH_MODULES."/".$module."/".$action.".php";
+if(is_config($_GET["module"]))
+{
+	$chemin_include = PATH_MODULES."/".$module."/".configFile($_GET["module"]).".php";
+	include($chemin_include);
+}
 
+$chemin_include = PATH_MODULES."/".$module."/".$action.".php";
 include($chemin_include);
 
 /*

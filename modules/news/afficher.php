@@ -1,7 +1,5 @@
 <?php
 
-include(PATH_MODELES."/bdd.php");
-
 $streamNews = new BDD;
 if(!$streamNews->query("SELECT * FROM news WHERE news_id = '".$_GET["id"]."'"))
 	$error = $streamNews->error();

@@ -19,26 +19,36 @@ $GLOBALS["DEFAULT_ACTION"] = $DEFAULT_ACTION;
 	Liste des modules et des actions
 */
 $MODULES = array(
-	"index",
-	"membres",
-	"news"
-);
+	"index" => array(
+		"show"
+		),
+	"membres" => array(
+		"auth"
+		),
+	"news" => array(
+		"liste",
+		"afficher",
+		"ecrire",
+		"save",
+		"delete"
+		)
+	);
 $GLOBALS["MODULES"] = $MODULES;
 
-$ACTIONS = array(
-	"index" => "show",
-	"membres" => "auth",
-	"news" => "liste",
-	"news" => "afficher"
+/*
+	Fichiers de configuration des modules
+*/
+$MODULES_CONFIG = array(
+	"news" => "config"
 );
-$GLOBALS["ACTIONS"] = $ACTIONS;
+$GLOBALS["MODULES_CONFIG"] = $MODULES_CONFIG;
 
 /*
 	Fonction de controles des modules et actions
 */
 function is_module($pModule)
 {
-	foreach($GLOBALS["MODULES"] as $module)
+	foreach($GLOBALS["MODULES"] as $module => $action)
 	{
 		if($pModule == $module)
 			return true;
@@ -49,10 +59,16 @@ function is_module($pModule)
 
 function is_action($pModule, $pAction)
 {
-	foreach($GLOBALS["ACTIONS"] as $module => $action)
+	foreach($GLOBALS["MODULES"] as $module => $tabAction)
 	{
-		if($pModule == $module && $pAction == $action)
-			return true;
+		if($pModule == $module)
+		{
+			foreach($tabAction as $action)
+			{
+				if($action == $pAction)
+					return true;
+			}
+		}
 	}
 	
 	return false;
@@ -66,4 +82,20 @@ function default_module()
 function default_action($pModule)
 {
 	return $GLOBALS["DEFAULT_ACTION"][$pModule];
+}
+
+function is_config($pModule)
+{
+	foreach($GLOBALS["MODULES_CONFIG"] as $module => $config)
+	{
+		if($module == $pModule && $config != null)
+			return true;
+	}
+	
+	return false;
+}
+
+function configFile($pModule)
+{
+	return $GLOBALS["MODULES_CONFIG"][$pModule];
 }

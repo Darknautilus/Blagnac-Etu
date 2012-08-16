@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}Suppression d'une news{% if error != null %} - Erreur{% endif %}{% endblock %}
+
+{% block content %}
+<div class="message">
+<p>
+{% if error == null %}
+La news a été correctement supprimée.
+{% else %}
+{{ error }}
+{% endif %}
+<br/>
+<a href="./index.php?module=news&action=liste">Revenir à la liste des news</a>
+</p>
+{% endblock %}
