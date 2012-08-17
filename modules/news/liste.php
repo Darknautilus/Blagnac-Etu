@@ -6,12 +6,12 @@ if(!isset($_GET["page"]) || $_GET["page"] <= 1)
 else
 	$page_news = $_GET["page"];
 
-$interFin = 10 * $page_news;
-$interDeb = $interFin - 10;
+$interFin = NB_NEWS_PAGE * $page_news;
+$interDeb = $interFin - NB_NEWS_PAGE;
 
 $nbNews = nbElemTable("news");
-$nbPages = (int)($nbNews/10);
-if($nbNews%10 != 0)
+$nbPages = (int)($nbNews/NB_NEWS_PAGE);
+if($nbNews%NB_NEWS_PAGE != 0)
 	$nbPages++;
 	
 $streamListeNews = new BDD;

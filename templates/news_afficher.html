@@ -1,10 +1,19 @@
+{#
+Template d'affichage d'une news
+
+Variables : news : Tableau de la news, contient les valeurs de chaque champ de la BDD
+			error : Éventuelle erreur de connexion à la BDD 
+
+Observations :
+#}
+
 {% extends "layout.html" %}
 
 {% block title %}Affichage d'une news - {% if error == null %}{{ news.news_title }}{% else %}Erreur{% endif %}{% endblock %}
 
 {% block content %}
 <div class="navPages">
-	<a href="./index.php?module=news">Revenir à la liste des news</a>
+	<a href="./index.php?module=news&action=liste">Revenir à la liste des news</a>
 </div>
 
 {% if error == null %}

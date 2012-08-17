@@ -1,3 +1,15 @@
+{#
+Template d'écriture d'une news
+
+Variables : tabNews : informations de la news (champs de la BDD)
+			mode : mode d'écriture de la news (voir ce-dessus)
+			MODE_NOUVEAU : mode de création de news
+			MODE_EDITION : mode d'édition d'une news existante
+
+Observations : Si on est en monde édition, le formulaire est pré-rempli avec les infos de la news
+#}
+
+
 {% extends "layout.html" %}
 
 {% block title %}Écriture d'une news{% endblock %}

@@ -1,3 +1,11 @@
+{#
+Template de suppression d'une news
+
+Variables : error : Éventuelle erreur de connexion à la BDD 
+
+Observations :
+#}
+
 {% extends "layout.html" %}
 
 {% block title %}Suppression d'une news{% if error != null %} - Erreur{% endif %}{% endblock %}

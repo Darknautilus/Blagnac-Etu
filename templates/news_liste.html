@@ -1,3 +1,14 @@
+{#
+Template d'affichage de toutes les news
+
+Variables : listeNews : tableau contenant toutes les news
+			numPage : numéro de la page courante
+			nbNews : nombre total de news dans la table
+			nbPages : nombre total de pages
+
+Observations : Le contenu de la news est coupé à une certaine longueur modifiable
+#}
+
 {% extends "layout.html" %}
 
 {% block title %}Liste des news{% endblock %}
@@ -9,11 +20,14 @@
 	<h3>{{ new.news_title }}</h3>
 	<span class="news_info">Par {{ new.news_author }} le {{ new.news_date }}</span>
 	<div class="news_content">
+	{# Longueur de coupe du texte #}
 	{{ new.news_content | cut("12") }} <a href="./index.php?module=news&action=afficher&id={{ new.news_id }}">Lire la suite</a>
 	</div>
 </div>
 {% endfor %}
 
+
+{# Affichage du nombre de pages et de la page courante #}
 <div class="navPages">
 {% if numPage > 1 %}
 	<a href="./index.php?module=news&action=liste&page={{ numPage - 1 }}">Page précédente</a>

@@ -1,3 +1,13 @@
+{#
+Template de sauvegarde d'une news
+
+Variables : error : Éventuelle erreur de connexion à la BDD
+			mode : mode d'écriture de la news (voir ce-dessus)
+			MODE_EDITION : mode d'édition d'une news existante
+
+Observations : Si on est en monde édition, le formulaire est pré-rempli avec les infos de la news
+#}
+
 {% extends "layout.html" %}
 
 {% block title %}Écriture d'une news{% if error != null %} - Erreur{% endif %}{% endblock %}
