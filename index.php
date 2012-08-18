@@ -23,6 +23,14 @@ function estAdmin()
 		return false;
 }
 
+/*
+	Informations globales de l'utilisateur à intégrer dans chaque template
+*/
+$GLOBALS["infoMembres"] = array("user_id" => $GLOBALS["user"]->data["user_id"],
+								"username" => $GLOBALS["user"]->data["username"],
+								"is_registered" => $GLOBALS["user"]->data["is_registered"],
+								"is_admin" => estAdmin()
+								);
 
 /*
 	Récupération des fichiers de configuration
@@ -34,7 +42,7 @@ include_once("./queries.php");
 	Initialisation du moteur de templates
 */
 include_once("./loadTwig.php");
-
+								
 /*
 	Désactivation des guillemets magiques
 */

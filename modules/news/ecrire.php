@@ -21,6 +21,6 @@ if(!empty($_GET["id"]) && is_numeric($_GET["id"]))
 if($mode == MODE_EDITION)
 	$tabNews = $tabNews[0];
 else
-	$tabNews = array("news_title" => "", "news_author" => $GLOBALS["user"]->data["username"], "news_date" => "", "news_content" => "");
+	$tabNews = array("news_title" => "", "news_author" => $GLOBALS["infoMembres"]["username"], "news_date" => "", "news_content" => "");
 
 echo $twig->render("news_ecrire.html", array("tabNews" => $tabNews, "mode" => $mode, "MODE_NOUVEAU" => MODE_NOUVEAU, "MODE_EDITION" => MODE_EDITION));

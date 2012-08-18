@@ -27,6 +27,6 @@
 
 	$loader = new Twig_Loader_Filesystem(dirname(__FILE__).'/templates');
 	$twig = new Twig_Environment($loader, array('cache' => false));
-	$twig->addfilter("cut", new Twig_Filter_Function("tronque"));
-	
+	$twig->addFilter("cut", new Twig_Filter_Function("tronque"));
+	$twig->addFunction("estAdmin", new Twig_Function_Function("estAdmin"));
 	

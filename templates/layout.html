@@ -10,6 +10,17 @@
 
 <header>
 {% include 'gbl_header.html' %}
+<div id="espaceMembres">
+<p>
+	{% if infoMembres.is_registered %}
+	Bienvenue {{ infoMembres.username }}<br/>
+	<a href="./index.php?module=membres&action=auth&logout=true&redirect=true">Se déconnecter</a>
+	{% else %}
+	<a href="./index.php?module=membres&action=auth&redirect=true">Se connecter</a>
+	<a href="./forum/ucp.php?mode=register">S'enregistrer</a>
+	{% endif %}
+</p>	
+</div>
 </header>
 
 <div id="content">

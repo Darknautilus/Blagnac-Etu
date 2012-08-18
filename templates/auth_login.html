@@ -1,10 +1,10 @@
-<!-- 
+{# 
 Template de connexion
 
 Variables : 
 
 Observations :
--->
+#}
 
 
 {% extends "layout.html" %}
@@ -13,9 +13,9 @@ Observations :
 
 {% block content %}
 
-{% if user_id != ANONYMOUS %}
+{% if infoMembres.user_id != ANONYMOUS %}
 
-<p>Bienvenue {{ username }}<br/>
+<p>Bienvenue {{ infoMembres.username }}<br/>
 <a href="./index.php?module=membres&action=auth&logout=true">Déconnexion</a>
 </p>
 

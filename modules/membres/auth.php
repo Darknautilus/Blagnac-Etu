@@ -32,13 +32,11 @@ if(isset($templateLogout))
 }
 else
 {
-	echo $twig->render("auth_login.html", array(
-	"ANONYMOUS" => ANONYMOUS,
-	"phpbb_root_path" => $GLOBALS["phpbb_root_path"],
-	"phpEx" => $GLOBALS["phpEx"],
-	"user_id" => $GLOBALS["user"]->data["user_id"],
-	"username" => $GLOBALS["user"]->data["username"],
-	"err" => $err
+	echo $twig->render("auth_login.html", array("ANONYMOUS" => ANONYMOUS,
+												"phpbb_root_path" => $GLOBALS["phpbb_root_path"],
+												"phpEx" => $GLOBALS["phpEx"],
+												"infoMembres" => $GLOBALS["infoMembres"],
+												"err" => $err
 ));
 
 }
