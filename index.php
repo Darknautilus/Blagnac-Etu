@@ -15,6 +15,15 @@ $GLOBALS["auth"] = $auth;
 $GLOBALS["phpbb_root_path"] = $phpbb_root_path;
 $GLOBALS["phpEx"] = $phpEx;
 
+/*
+	Initialisation des sessions normales
+*/
+
+session_start();
+
+/*
+	Informations globales de l'utilisateur à intégrer dans chaque template
+*/
 function estAdmin()
 {
 	if($GLOBALS["auth"]->acl_get("a_") == 1)
@@ -22,10 +31,6 @@ function estAdmin()
 	else
 		return false;
 }
-
-/*
-	Informations globales de l'utilisateur à intégrer dans chaque template
-*/
 function majInfoMembres()
 {
 	return array("user_id" => $GLOBALS["user"]->data["user_id"],
@@ -35,6 +40,18 @@ function majInfoMembres()
 								);
 }
 $GLOBALS["infoMembres"] = majInfoMembres();
+
+/*
+	Gestion des redirections URL
+*/
+function redirectURL()
+{
+	$url = "./index.php?module=".$_SESSION["module"]."&action=".$_SESSION["action"];
+	foreach($_SESSION["paramURL"] as $key => $value)
+		$url .= "&".$key."=".$value;
+
+	return $url;
+}
 
 /*
 	Récupération des fichiers de configuration
@@ -79,10 +96,24 @@ if(!isset($_GET["action"]) || !is_action($module, $_GET["action"]))
 		$action = default_action($module);
 else
 		$action = $_GET["action"];
+		
+if(!isset($_GET["redirect"]) || $_GET["redirect"] != true)
+{
+	$_SESSION["module"] = $module;
+	$_SESSION["action"] = $action;
+	$_SESSION["paramURL"] = array();
+	foreach($_GET as $key => $value)
+	{
+		if($key != "module" && $key != "action" && $key != "redirect")
+			$_SESSION["paramURL"][$key] = $value;
+	}
+}
 
 /*var_dump($module);
 var_dump($action);
-var_dump($GLOBALS["infoMembres"]);*/
+var_dump($GLOBALS["infoMembres"]);
+var_dump($_GET);
+var_dump($_SESSION);*/
 
 if(is_config($_GET["module"]))
 {

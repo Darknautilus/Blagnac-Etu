@@ -11,4 +11,4 @@ else
 		$error = "Une erreur SQL est survenue";
 }
 
-echo $twig->render("news_afficher.html", array("error" => $error, "news" => $tabNews[0]));
+echo $twig->render("news_afficher.html", array("infoMembres" => $GLOBALS["infoMembres"], "error" => $error, "news" => $tabNews[0]));

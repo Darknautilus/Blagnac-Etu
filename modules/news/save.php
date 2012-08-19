@@ -28,4 +28,4 @@ else if($_GET["mode"] == MODE_NOUVEAU)
 else
 	$error = "Erreur de requête GET : mode manquant";
 
-echo $twig->render("news_save.html", array("error" => $error, "mode" => $_GET["mode"], "MODE_EDITION" => MODE_EDITION));
+echo $twig->render("news_save.html", array("infoMembres" => $GLOBALS["infoMembres"], "error" => $error, "mode" => $_GET["mode"], "MODE_EDITION" => MODE_EDITION));

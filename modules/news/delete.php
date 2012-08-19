@@ -17,4 +17,4 @@ else
 		$error = $streamNews->error();
 }
 
-echo $twig->render("news_delete.html", array("error" => $error));
+echo $twig->render("news_delete.html", array("infoMembres" => $GLOBALS["infoMembres"], "error" => $error));

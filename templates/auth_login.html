@@ -16,7 +16,7 @@ Observations :
 {% if infoMembres.is_registered %}
 
 <p>Bienvenue {{ infoMembres.username }}<br/>
-<a href="./index.php?module=membres&action=auth&logout=true">Déconnexion</a> <a href="./index.php">Revenir à l'accueil</a>
+<a href="./index.php?module=membres&action=auth&logout=true&redirect=true">Déconnexion</a> <a href="{{ redirectURL() }}">Revenir où j'étais</a>
 </p>
 
 {% else %}
@@ -26,7 +26,7 @@ Observations :
 	
 	{% endif %}
 	
-<form method="post" action="./index.php?module=membres&action=auth">
+<form method="post" action="./index.php?module=membres&action=auth&redirect=true">
    <table>
       <tr>
          <td align="right">Pseudo:</td>

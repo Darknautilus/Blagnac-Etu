@@ -18,6 +18,6 @@ $streamListeNews = new BDD;
 $streamListeNews->query("SELECT * FROM news LIMIT ".$interDeb." , ".$interFin);
 $listeNews = $streamListeNews->result()->fetchAll();
 
-echo $twig->render("news_liste.html", array("listeNews" => $listeNews, "numPage" => $page_news, "nbNews" => $nbNews, "nbPages" => $nbPages));
+echo $twig->render("news_liste.html", array("infoMembres" => $GLOBALS["infoMembres"], "listeNews" => $listeNews, "numPage" => $page_news, "nbNews" => $nbNews, "nbPages" => $nbPages));
 
 

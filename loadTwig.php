@@ -29,4 +29,4 @@
 	$twig = new Twig_Environment($loader, array('cache' => false));
 	$twig->addFilter("cut", new Twig_Filter_Function("tronque"));
 	$twig->addFunction("estAdmin", new Twig_Function_Function("estAdmin"));
-	
+	$twig->addFunction("redirectURL", new Twig_Function_Function("redirectURL"));	

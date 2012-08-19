@@ -15,14 +15,27 @@ Observations : Le contenu de la news est coupé à une certaine longueur modifia
 
 {% block content %}
 
+{% if infoMembres.is_admin %}
+<div id="news_admin">
+	<a href="./index.php?module=news&action=ecrire">Écrire une news</a>
+</div>
+{% endif %}
+
 {% for new in listeNews %}
 <div class="news_liste">
-	<h3>{{ new.news_title }}</h3>
+	<h3 class="news_title">{{ new.news_title }}</h3>
 	<span class="news_info">Par {{ new.news_author }} le {{ new.news_date }}</span>
 	<div class="news_content">
 	{# Longueur de coupe du texte #}
 	{{ new.news_content | cut("12") }} <a href="./index.php?module=news&action=afficher&id={{ new.news_id }}">Lire la suite</a>
 	</div>
+	
+	{% if infoMembres.is_admin %}
+	<div class="news_liste_config">
+		<a href="./index.php?module=news&action=ecrire&id={{ new.news_id }}">Modifier</a>
+		<a href="./index.php?module=news&action=delete&id={{ new.news_id }}">Supprimer</a>
+	</div>
+	{% endif %}
 </div>
 {% endfor %}
 
