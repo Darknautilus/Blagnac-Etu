@@ -68,6 +68,24 @@ Pour pouvoir travailler sur le forum, tu devras en installer une version chez to
 
 Si tu fais des modifications de style sur le forum, tu devras vider le cache du forum (section styles/templates du panneau d'administration) et de ton navigateur.</p>
 
+<h1>Fonctionnalités développées</h1>
+
+<h3>Redirections URL</h3>
+
+<p>À chaque chargement de page, le module courant, l'action et les paramètres GET sont enregistrés dans une variable de session.
+Dans certaines situations, il peut être intéressant de revenir à une certaine page, il faut donc pour cela arrêter l'enregistrement pour revenir à des valeurs antérieures.
+</p>
+<p>Prenons l'exemple du module de connexion : On voudrait après une connexion réussie revenir sur la page où on était avant de se connecter.<br/>
+On a le schéma suivant : Page A ----> Formulaire F ----> Page A<br/>
+Comme pour toutes les pages, les informations de la Page A sont enregistrées dans la variable de session. Pour pouvoir revenir sur A, on a besoin d'empêcher les informations du Formulaire F de s'enregistrer à leur tour.
+Pour cela, il faut appeler le formulaire en spécifiant le paramètre GET "redirect" et lui donner la valeur "true" (url: ./index.php?module=...&action=...&redirect=true)<br/>
+Enfin, une fois la connexion réussie, il faut rappeler la Page A. Pour construire l'URL, on utilise la fonction Twig redirectURL() comme ceci : &lt;a href="{{ redirectURL() }}"&gt;&lt;/a&gt;<br/>
+Notes : <ul>
+			<li>Cela n'est pas utilisable sur le forum</li>
+			<li>Il faut mettre le paramètre redirect dans TOUS les liens pointant vers des pages dont on ne veut pas enregistrer les infos</li>
+		</ul>
+</p>
+
 <h1>Pour finir</h1>
 
 <p>Ouf, tu as presque tout lu (ou pas), sache que le module par défaut pour l'instant est "index". Il n'a qu'une seule action : "show". Tu pourras donc utiliser ce module pour tester la présentation générale du site et, si tu veux, y faire une petite page d'accueil en attendant que j'aie réalisé le système de news.<br/>
