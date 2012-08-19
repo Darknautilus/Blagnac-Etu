@@ -13,10 +13,10 @@ Observations :
 
 {% block content %}
 
-{% if infoMembres.user_id != ANONYMOUS %}
+{% if infoMembres.is_registered %}
 
 <p>Bienvenue {{ infoMembres.username }}<br/>
-<a href="./index.php?module=membres&action=auth&logout=true">Déconnexion</a>
+<a href="./index.php?module=membres&action=auth&logout=true">Déconnexion</a> <a href="./index.php">Revenir à l'accueil</a>
 </p>
 
 {% else %}

@@ -1,5 +1,7 @@
 <?php
 
+$templateLogout = false;
+
 if (isset($_GET['logout']))
 {
    $GLOBALS["user"]->session_kill();
@@ -26,14 +28,15 @@ if (isset($_POST['login']))
    }
 }
 
-if(isset($templateLogout))
+$GLOBALS["infoMembres"] = majInfoMembres();
+
+if($templateLogout)
 {
 	echo $twig->render("auth_logout.html");
 }
 else
 {
-	echo $twig->render("auth_login.html", array("ANONYMOUS" => ANONYMOUS,
-												"phpbb_root_path" => $GLOBALS["phpbb_root_path"],
+	echo $twig->render("auth_login.html", array("phpbb_root_path" => $GLOBALS["phpbb_root_path"],
 												"phpEx" => $GLOBALS["phpEx"],
 												"infoMembres" => $GLOBALS["infoMembres"],
 												"err" => $err

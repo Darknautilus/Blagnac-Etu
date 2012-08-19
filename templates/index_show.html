@@ -5,7 +5,7 @@
 {% block content %}
 
 <p>Bonjour {{ infoMembres.username }}<br/>
-{% if infoMembres.estAdmin == true %}
+{% if infoMembres.is_admin %}
 	Vous êtes Administrateur ! Respect !
 {% else %}
 	T'es pas Administrateur, tocard...

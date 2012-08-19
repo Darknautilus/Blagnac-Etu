@@ -26,11 +26,15 @@ function estAdmin()
 /*
 	Informations globales de l'utilisateur à intégrer dans chaque template
 */
-$GLOBALS["infoMembres"] = array("user_id" => $GLOBALS["user"]->data["user_id"],
+function majInfoMembres()
+{
+	return array("user_id" => $GLOBALS["user"]->data["user_id"],
 								"username" => $GLOBALS["user"]->data["username"],
 								"is_registered" => $GLOBALS["user"]->data["is_registered"],
 								"is_admin" => estAdmin()
 								);
+}
+$GLOBALS["infoMembres"] = majInfoMembres();
 
 /*
 	Récupération des fichiers de configuration
@@ -77,7 +81,8 @@ else
 		$action = $_GET["action"];
 
 /*var_dump($module);
-var_dump($action);*/
+var_dump($action);
+var_dump($GLOBALS["infoMembres"]);*/
 
 if(is_config($_GET["module"]))
 {
