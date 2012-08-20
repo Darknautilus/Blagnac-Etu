@@ -28,6 +28,19 @@ h1
 	color:red;
 }
 
+.message
+{
+	padding:10px;
+	width:66%;
+	margin:auto;
+}
+
+.navPages
+{
+	text-align:center;
+	margin:10px;
+}
+
 footer
 {
 	margin-top:10px;

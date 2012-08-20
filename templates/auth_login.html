@@ -15,8 +15,10 @@ Observations :
 
 {% if infoMembres.is_registered %}
 
-<p>Bienvenue {{ infoMembres.username }}<br/>
-<a href="./index.php?module=membres&action=auth&logout=true&redirect=true">Déconnexion</a> <a href="{{ redirectURL() }}">Revenir où j'étais</a>
+<p class="message">Bienvenue {{ infoMembres.username }}
+</p>
+<p class="navPages">
+<a href="{{ redirectURL() }}">Revenir où j'étais</a> | <a href="./index.php?module=membres&action=auth&logout=true&redirect=true">Déconnexion</a>
 </p>
 
 {% else %}

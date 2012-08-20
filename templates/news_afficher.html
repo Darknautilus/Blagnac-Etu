@@ -17,7 +17,7 @@ Observations :
 </div>
 
 {% if error == null %}
-<div class="news_Full">
+<div id="news_Full">
 	<h3 class="news_title">{{ news.news_title }}</h3>
 	<span class="news_info">Par {{ news.news_author }} le {{ news.news_date }}</span>
 	<div class="news_content">
@@ -29,5 +29,11 @@ Observations :
 	<p>{{ error }}</p>
 </div>
 {% endif %}
+
+<hr/>
+
+<div class="navPages">
+	<a href="./index.php?module=news&action=liste">Revenir à la liste des news</a>
+</div>
 
 {% endblock %}

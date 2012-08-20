@@ -25,10 +25,6 @@ Observations : Le contenu de la news est coupé à une certaine longueur modifia
 <div class="news_liste">
 	<h3 class="news_title">{{ new.news_title }}</h3>
 	<span class="news_info">Par {{ new.news_author }} le {{ new.news_date }}</span>
-	<div class="news_content">
-	{# Longueur de coupe du texte #}
-	{{ new.news_content | cut("12") }} <a href="./index.php?module=news&action=afficher&id={{ new.news_id }}">Lire la suite</a>
-	</div>
 	
 	{% if infoMembres.is_admin %}
 	<div class="news_liste_config">
@@ -36,12 +32,22 @@ Observations : Le contenu de la news est coupé à une certaine longueur modifia
 		<a href="./index.php?module=news&action=delete&id={{ new.news_id }}">Supprimer</a>
 	</div>
 	{% endif %}
+	
+	<div class="news_content">
+	{# Longueur de coupe du texte #}
+	{{ new.news_content | cut("20") }} <a href="./index.php?module=news&action=afficher&id={{ new.news_id }}">Lire la suite</a>
+	</div>
 </div>
 {% endfor %}
 
+<hr/>
 
 {# Affichage du nombre de pages et de la page courante #}
 <div class="navPages">
+{% if nbPages == 0 %}
+<p>Pas de news</p>
+{% else %}
+
 {% if numPage > 1 %}
 	<a href="./index.php?module=news&action=liste&page={{ numPage - 1 }}">Page précédente</a>
 {% endif %}
@@ -52,6 +58,7 @@ Observations : Le contenu de la news est coupé à une certaine longueur modifia
 {% endfor %}
 {% if numPage < nbPages %}
 	<a href="./index.php?module=news&action=liste&page={{ numPage + 1 }}">Page suivante</a>
+{% endif %}
 {% endif %}
 	
 </div>

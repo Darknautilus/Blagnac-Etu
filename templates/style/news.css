@@ -1,0 +1,29 @@
+#news_admin
+{
+	text-align:center;
+	margin:10px;
+}
+
+.news_liste_config
+{
+	float:right;
+}
+
+.news_info
+{
+	font-style:italic;
+}
+.news_content
+{
+	margin:10px;
+}
+
+#formEcritureNews *
+{
+	margin:10px;
+}
+
+input, textarea
+{
+	border-radius:5px;
+}

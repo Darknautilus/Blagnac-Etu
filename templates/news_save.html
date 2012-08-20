@@ -20,7 +20,9 @@ La news a été correctement {% if mode == MODE_EDITION %}modifiée{% else %}pub
 {% else %}
 {{ error }}
 {% endif %}
-<br/>
-<a href="./index.php?module=news&action=liste">Revenir à la liste des news</a>
 </p>
+<div class="navPages">
+	<a href="./index.php?module=news&action=liste">Revenir à la liste des news</a>
+</div>
+</div>
 {% endblock %}

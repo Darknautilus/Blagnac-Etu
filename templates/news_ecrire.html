@@ -15,6 +15,8 @@ Observations : Si on est en monde édition, le formulaire est pré-rempli avec l
 {% block title %}Écriture d'une news{% endblock %}
 
 {% block content %}
+<div id="formEcritureNews">
+
 <form method="post" action="./index.php?module=news&action=save&id={{ tabNews.news_id }}&mode={{ mode }}">
 	<p>
 	<label for="newsTitle">Titre : </label>
@@ -26,7 +28,10 @@ Observations : Si on est en monde édition, le formulaire est pré-rempli avec l
 	<br/>
 	
 	<input type="submit" value="Envoyer" />
+	<a href="./index.php?module=news&action=liste">Revenir à la liste</a>
 	</p>
 </form>
+
+</div>
 	
 {% endblock %}
