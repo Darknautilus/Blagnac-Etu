@@ -1,4 +1,16 @@
+body
+{
+	width:66%;
+	width-min:800px;
+	margin:auto;
+}
+
 #gbl_menu
 {
 	color: red;
+}
+
+#espaceMembres
+{
+	float:right;
 }

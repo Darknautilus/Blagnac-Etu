@@ -2,14 +2,13 @@
 <html lang="fr">
 <head>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" href="./templates/style/global.css" />
+	<link rel="stylesheet" href="./forum/styles/BlackOut/theme/stylesheet.css" />
 	<title>{% block title %}{% endblock %} - Blagnac-Etu</title>
 </head>
 
 <body>
 
 <header>
-{% include 'gbl_header.html' %}
 <div id="espaceMembres">
 <p>
 {% if infoMembres.is_registered %}
@@ -21,6 +20,7 @@ Bienvenue {{ infoMembres.username }}<br/>
 {% endif %}
 </p>	
 </div>
+{% include 'gbl_header.html' %}
 </header>
 
 <div id="content">
