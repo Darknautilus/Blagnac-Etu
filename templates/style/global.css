@@ -1,8 +1,16 @@
-body
+body, #phpbb
 {
 	width:66%;
 	width-min:800px;
 	margin:auto;
+}
+
+#content, #bodyarea
+{
+	background-color:black;
+	border-radius:10px;
+	padding:5px;
+	box-shadow: 4px 4px 2px black;
 }
 
 #gbl_menu
@@ -13,4 +21,18 @@ body
 #espaceMembres
 {
 	float:right;
+}
+
+h1
+{
+	color:red;
+}
+
+footer
+{
+	margin-top:10px;
+	background-color:black;
+	border-radius:10px;
+	padding:5px;
+	box-shadow: 4px 4px 2px black;
 }
