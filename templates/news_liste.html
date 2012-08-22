@@ -49,7 +49,7 @@ Observations : Le contenu de la news est coupé à une certaine longueur modifia
 {% else %}
 
 {% if numPage > 1 %}
-	<a href="./index.php?module=news&action=liste&page={{ numPage - 1 }}">Page précédente</a>
+	<a href="./index.php?module=news&action=liste&page={{ numPage - 1 }}">&lt;</a>
 {% endif %}
 {% for page in 1..nbPages %}
 	{% if page != numPage %}<a href="./index.php?module=news&action=liste&page={{ page }}">{% endif %}
@@ -57,7 +57,7 @@ Observations : Le contenu de la news est coupé à une certaine longueur modifia
 	{% if page != numPage %}</a>{% endif %}
 {% endfor %}
 {% if numPage < nbPages %}
-	<a href="./index.php?module=news&action=liste&page={{ numPage + 1 }}">Page suivante</a>
+	<a href="./index.php?module=news&action=liste&page={{ numPage + 1 }}">&gt;</a>
 {% endif %}
 {% endif %}
 	

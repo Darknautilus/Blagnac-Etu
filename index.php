@@ -115,9 +115,9 @@ var_dump($GLOBALS["infoMembres"]);
 var_dump($_GET);
 var_dump($_SESSION);*/
 
-if(is_config($_GET["module"]))
+if(is_config($module))
 {
-	$chemin_include = PATH_MODULES."/".$module."/".configFile($_GET["module"]).".php";
+	$chemin_include = PATH_MODULES."/".$module."/".configFile($module).".php";
 	include($chemin_include);
 }
 

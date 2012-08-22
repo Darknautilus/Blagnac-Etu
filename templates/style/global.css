@@ -13,25 +13,15 @@ body, #phpbb
 	box-shadow: 4px 4px 2px black;
 }
 
-#gbl_menu
-{
-	color: red;
-}
-
 #banderole
 {
-	background:url(./images/logo-site.png) no-repeat left top;
+	background:url("./images/logo-site.png") no-repeat left top;
 	min-height : 80px;
 }
 
 #espaceMembres
 {
 	float:right;
-}
-
-h1
-{
-	color:red;
 }
 
 .message
