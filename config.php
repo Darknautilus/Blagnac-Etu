@@ -7,7 +7,7 @@
 define("DBSERVER", "localhost");
 define("DBNAME", "etudiants");
 define("DBUSER", "root");
-define("DBPASSWD", "root");
+define("DBPASSWD", "");
 
 /*
 	Chemins des repertoires
